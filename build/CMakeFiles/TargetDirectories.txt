@@ -1,0 +1,3 @@
+/home/djuradj/Projekti/projekatOOP/v4/build/CMakeFiles/apk.dir
+/home/djuradj/Projekti/projekatOOP/v4/build/CMakeFiles/edit_cache.dir
+/home/djuradj/Projekti/projekatOOP/v4/build/CMakeFiles/rebuild_cache.dir
