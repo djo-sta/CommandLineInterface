@@ -8,8 +8,8 @@ Touch::Touch(Emulator* e)
 void Touch::process() {
     ifstream ifajl = ifstream(filename);
     if (ifajl) {
-        cout << "File " << filename << " already exists!" << endl;
-        throw 0;
+        *emulator->out << "File " << filename << " already exists!" << endl << '-' << filename.size() << '-' << endl;
+        throw -(int)filename.size();
     }
     else {
         ofile = ofstream(filename);

@@ -25,6 +25,8 @@ public:
 
     void reset();
 
+    void errorHandling(int x);
+
     std::stringstream pipe;
 
     bool is_piping;

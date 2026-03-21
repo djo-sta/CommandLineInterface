@@ -12,8 +12,8 @@ void Batch::setOut() {
         out = emulator->out;
     }
     else if (c == '|') {
-        cout << "Batch command can't be piped!" << endl;
-        throw 0;
+        *emulator->out << "Batch command can't be piped!" << endl;
+        throw 1;
     }
     else if (c == '>') {
         c = emulator->peek();
@@ -29,7 +29,7 @@ void Batch::setOut() {
         out = &ofile;
     }
     else {
-        cout << "Command has too many arguments" << endl;
+        *emulator->out << "Command has too many arguments" << endl;
         throw 0;
     }
 }
@@ -40,8 +40,8 @@ void Batch::process() {
     int num = 0;
     Emulator* konsole;
     if (!ifile) {
-        cout << "File doesnt exist!";
-        throw 1;
+        *emulator->out << "File doesnt exist!";
+        throw -(int)filename.size();
     }
     stringstream buffer;
     while (getline(ifile, line)) {

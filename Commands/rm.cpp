@@ -10,13 +10,13 @@ void Rm::process() {
     ifile = ifstream(filename);
     if (ifile) {
         if (!filesystem::remove(filename)) {
-            cout << "File couldnt be deleted!";
-            throw 1;
+            *emulator->out << "File couldnt be deleted!";
+            throw 0;
         }
     }
     else {
-        cout << "File doesnt exist!";
-        throw 1;
+        *emulator->out << "File doesnt exist!";
+        throw -(int)filename.size();
     }
 }
 

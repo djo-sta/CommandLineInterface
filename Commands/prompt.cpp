@@ -7,8 +7,8 @@ Prompt::Prompt(Emulator* e)
 
 void Prompt::process() {
     if (argument.empty()) {
-        cout << "Argument is empty!" << endl;
-        throw 0;
+        *emulator->out << "Argument is empty!" << endl;
+        throw 2;
     }
     emulator->prompt_sign = argument;
 }
@@ -16,7 +16,7 @@ void Prompt::process() {
 void Prompt::setOut() {
     char c = emulator->peek();
     if (c != 0 && !isspace(c)) {
-        cout << "This command has no output stream!(6)" << endl;
+        *emulator->out << "This command has no output stream!(6)" << endl;
         throw 0;
     }
 }

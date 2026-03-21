@@ -12,11 +12,13 @@ int main() {
             alacritty.process();
         }
         catch (int x) {
-            //ERROR HANDLE
-            if (x == 99) 
+            if (x == 99) {
                 break;
-            else
+            }
+            else {
+                alacritty.errorHandling(x);
                 alacritty.reset(); 
+            }
         }
     }
     return 0;

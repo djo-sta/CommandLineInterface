@@ -21,36 +21,36 @@ void Head::getOpt() {
                 else if (c>47 && c<58) {
                     digits++;
                     if (digits > 5) {
-                        cout << "Number is too big!" << endl;
-                        throw 0;
+                        *emulator->out << "Number is too big!" << endl;
+                        throw -6;
                     }
                     num_of_lines = num_of_lines*10 + c - 48;
                 }
                 else {
-                    cout << "Syntax error: expected a number!" << (int)c << endl;
-                    throw 0;
+                    *emulator->out << "Syntax error: expected a number!" << (int)c << endl;
+                    throw 1;
                 }
             }
             if (num_of_lines == 0) {
-                cout << "Number must be higher than 0!" << endl;
+                *emulator->out << "Number must be higher than 0!" << endl;
                 throw 0;
             }
         }
         else {
-            cout << "Syntax error: expected 'n'" << endl;
-            throw 0;
+            *emulator->out << "Syntax error: expected 'n'" << endl;
+            throw 1;
         }
     }
     else {
-        cout << "Syntax error: expected '-'" << endl;
-        throw 0;
+        *emulator->out << "Syntax error: expected '-'" << endl;
+        throw 1;
     }
 }
 
 void Head::process() {
     if (argument.empty()) {
-        cout << "Argument is empty!" << endl;
-        throw 0;
+        *emulator->out << "Argument is empty!" << endl;
+        throw 2;
     }
     string lines = "";
     int num = 0;

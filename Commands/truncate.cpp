@@ -12,8 +12,8 @@ void Truncate::process() {
         ofile << "";
     }
     else {
-        cout << "File " << filename << " doesn't exist!" << endl;
-        throw 0;
+        *emulator->out << "File " << filename << " doesn't exist!" << endl;
+        throw -(int)filename.size();
     }
 }
 

@@ -45,7 +45,7 @@ void Emulator::eatSpaces() {
 
 void Emulator::fillQ() {
     if (!getline(*in, q)) {
-        cout << "Error";
+        *out << "Error";
         throw 0;
     }
 }
@@ -133,7 +133,7 @@ void Emulator::createCommand() {
         
     }
     else {
-        cout << "Unknown command" << word << endl;
+        *out << "Unknown command" << word << endl;
         throw 0;
     }
 }
@@ -155,4 +155,20 @@ void Emulator::reset() {
     pipe.str("");
     pipe.clear();
     cin.clear();
+}
+
+void Emulator::errorHandling(int x) {
+    if (x >= 0) {
+        position -= x;
+        *out << q << endl;
+        for (int i=0; i<position; i++) *out << ' ';
+        *out << '^' << endl;
+    }
+    else {
+        position += x;
+        *out << q << endl;
+        for (int i=0; i<position; i++) *out << ' ';
+        for (int j=0; j<-x; j++) *out << '^';
+        *out << endl;
+    }
 }

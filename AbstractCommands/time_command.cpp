@@ -11,8 +11,8 @@ TimeCommand::TimeCommand(Emulator* e)
 
 void TimeCommand::setIn() {
     if (emulator->is_piping) {
-        cout << endl << "This command has no in stream" << endl;
-        throw 0;
+        *emulator->out << endl << "This command has no in stream" << endl;
+        throw 6;
     }
 }
 
@@ -23,8 +23,8 @@ void TimeCommand::setOut() {
         out = emulator->out;
     }
     else if (c == '<') {
-        cout << endl << "This command has no in stream" << endl;
-        throw 0;
+        *emulator->out << endl << "This command has no in stream" << endl;
+        throw 1;
     }
     else if (c == '>') {
         string word;
@@ -45,7 +45,7 @@ void TimeCommand::setOut() {
         emulator->is_piping = 1;
     }
     else {
-        cout << endl << "This command has too many arguments" << endl;
+        *emulator->out << endl << "This command has too many arguments" << endl;
         throw 0;
     }
 }

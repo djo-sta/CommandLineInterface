@@ -23,7 +23,7 @@ void Tr::setIn() {
                 in = &ifile;
             }
             else {
-                cout << "File " << word << " doesnt exist!" << endl;
+                *emulator->out << "File " << word << " doesnt exist!" << endl;
                 throw 0;
             }
             allow_redirection = 1;
@@ -35,7 +35,7 @@ void Tr::setIn() {
             allow_redirection = 1;
         }
         else if (c == 0) {
-            cout << "Command has too few arguments!" << endl;
+            *emulator->out << "Command has too few arguments!" << endl;
             throw 0;
         }
         else {
@@ -45,7 +45,7 @@ void Tr::setIn() {
                 in = &ifile;
             }
             else {
-                cout << "File " << word << " doesnt exist!" << endl;
+                *emulator->out << "File " << word << " doesnt exist!" << endl;
                 throw 0;
             }
         }
@@ -80,9 +80,8 @@ void Tr::process() {
             tmp = tmp + argument[i];
         }
     }
-    //cout << argument << endl << operation << endl << with << endl;
     *out << tmp;
-    if (out == &cout) cout << endl;
+    if (out == &cout) *emulator->out << endl;
 }
 
 void Tr::getOpt() {
@@ -91,13 +90,13 @@ void Tr::getOpt() {
     if (c == '-') {
         operation = getQuotes();
         if (operation.empty()) {
-            cout << "Operation is empty!" << endl;
-            throw 0;
+            *emulator->out << "Operation is empty!" << endl;
+            throw 2;
         }
     }
     else {
-        cout << "Syntax error, expected: '-'" << endl;
-        throw 0;
+        *emulator->out << "Syntax error, expected: '-'" << endl;
+        throw 1;
     }
 }
 
@@ -111,7 +110,7 @@ void Tr::getWith() {
         with = getQuotes();
     }
     else {
-        cout << "Syntax error: quotes expected!" << endl;
+        *emulator->out << "Syntax error: quotes expected!" << endl;
         throw 0;
     } 
 }
