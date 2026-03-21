@@ -133,8 +133,9 @@ void Emulator::createCommand() {
         
     }
     else {
-        *out << "Unknown command" << word << endl;
-        throw 0;
+        *out << "\nUnknown command:  " << word << endl;
+        position--;
+        throw -(int)word.size();
     }
 }
 
@@ -160,13 +161,13 @@ void Emulator::reset() {
 void Emulator::errorHandling(int x) {
     if (x >= 0) {
         position -= x;
-        *out << q << endl;
+        *out << endl << q << endl;
         for (int i=0; i<position; i++) *out << ' ';
         *out << '^' << endl;
     }
     else {
         position += x;
-        *out << q << endl;
+        *out << endl << q << endl;
         for (int i=0; i<position; i++) *out << ' ';
         for (int j=0; j<-x; j++) *out << '^';
         *out << endl;

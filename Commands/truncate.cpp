@@ -12,7 +12,7 @@ void Truncate::process() {
         ofile << "";
     }
     else {
-        *emulator->out << "File " << filename << " doesn't exist!" << endl;
+        *emulator->out << "\nFile " << filename << " doesn't exist!" << endl;
         throw -(int)filename.size();
     }
 }

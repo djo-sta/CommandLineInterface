@@ -22,12 +22,12 @@ void FileCommand::setIn() {
                 in = &ifile;
             }
             else {
-                *emulator->out << "File " << filename << " doesn't exist!(3)" << endl;
+                *emulator->out << "\nFile " << filename << " doesn't exist!(3)" << endl;
                 throw -(int)filename.size();
             }
         }
         else if (c == 0) {
-            *emulator->out << "Command has too few arguments!(4)" << endl;
+            *emulator->out << "\nCommand has too few arguments!(4)" << endl;
             throw 0;
         }
     }
@@ -36,7 +36,7 @@ void FileCommand::setIn() {
 void FileCommand::setOut() {
     char c = emulator->peek();
     if (c != 0) {
-        *emulator->out << "Command has too many arguments!(5)" << endl;
+        *emulator->out << "\nCommand has too many arguments!(5)" << endl;
         throw 1;
     }
 }

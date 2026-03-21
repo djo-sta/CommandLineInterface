@@ -23,7 +23,7 @@ void Command::checkExcess() {
             continue;
         }
         else {
-            *emulator->out << "Command has too many arguments!(1)" << endl;
+            *emulator->out << "\nCommand has too many arguments!(1)" << endl;
             throw 1;
         }
     }
@@ -38,7 +38,7 @@ string Command::getFilename() {
         c = emulator->get();
     }
     if (word.empty()) {
-        *emulator->out << "Filename not entered!(2)" << endl;
+        *emulator->out << "\nFilename not entered!(2)" << endl;
         throw 0;
     }
     return word;

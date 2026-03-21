@@ -40,7 +40,7 @@ void Batch::process() {
     int num = 0;
     Emulator* konsole;
     if (!ifile) {
-        *emulator->out << "File doesnt exist!";
+        *emulator->out << "\nFile doesnt exist!" << endl;
         throw -(int)filename.size();
     }
     stringstream buffer;
@@ -57,14 +57,16 @@ void Batch::process() {
         catch (int x) {
             //ERROR HANDLE
             if (x == 99) 
-                break;
-            else
-                konsole->reset(); 
+                throw 99;
+            else {
+                konsole->errorHandling(x);
+                konsole->reset();
+            }
         }
         delete konsole;
         konsole = nullptr;
     }
-    *out << buffer.str();
+    *out << endl << endl << buffer.str();
 }
 
 void Batch::run() {

@@ -25,7 +25,7 @@ void ArgCommand::setIn() {
                 in = &ifile;
             }
             else {
-                *emulator->out << "File " << word << " doesnt exist!" << endl;
+                *emulator->out << "\nFile " << word << " doesnt exist!" << endl;
                 throw -(int)word.size();
             }
             allow_redirection = 1;
@@ -43,7 +43,7 @@ void ArgCommand::setIn() {
                 in = &ifile;
             }
             else {
-                *emulator->out << "File " << word << " doesnt exist!" << endl;
+                *emulator->out << "\nFile " << word << " doesnt exist!" << endl;
                 throw -1*word.size();
             }
         }
@@ -75,7 +75,7 @@ void ArgCommand::setOut() {
             out = &ofile;
         }
         else {
-            *emulator->out << "Command has too many arguments" << endl;
+            *emulator->out << "\nCommand has too many arguments" << endl;
             throw 1;
         }
     }
@@ -83,7 +83,7 @@ void ArgCommand::setOut() {
         out = emulator->out;
         char c = emulator->get();
         if (c != 0) {
-            *emulator->out << "Redirection is not allowed!" << endl;
+            *emulator->out << "\nRedirection is not allowed!" << endl;
             throw 1;
         }
     }
@@ -94,7 +94,7 @@ string ArgCommand::getQuotes() {
     char c = emulator->get();
 
     if (c != '"') {
-        *emulator->out << "Syntax error: quotes missing" << endl;
+        *emulator->out << "\nSyntax error: quotes missing" << endl;
         throw 1;
     }
 
@@ -117,7 +117,7 @@ string ArgCommand::getQuotes() {
     if (quotes_closed)
         return word;
     else {
-        *emulator->out << "Syntax error: quotes not closed!" << endl;
+        *emulator->out << "\nSyntax error: quotes not closed!" << endl;
         throw 0;
     }
 }

@@ -8,11 +8,11 @@ Echo::Echo(Emulator* e)
 
 void Echo::process() {
     if (argument.empty()) {
-        *emulator->out << "Argument is empty!" << endl;
+        *emulator->out << "\nArgument is empty!" << endl;
         throw 2;
     }
     *out << argument;
-    if (out == &cout) *emulator->out << endl;
+    if (out == emulator->out) *emulator->out << endl;
 }
 
 void Echo::run() {

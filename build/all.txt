@@ -21,4 +21,5 @@ tr input.txt -"execut" "E"
 head -n1
 batch basic_commands.txt
 batch red_commands.txt >batch.out
+batch cmd_commands.txt
 echo "I love programming in C!"  | tr -"C" "C++" | wc -c

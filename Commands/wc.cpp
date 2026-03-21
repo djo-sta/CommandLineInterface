@@ -15,7 +15,7 @@ void Wc::getOpt() {
                 operation.push_back(c);
                 c = emulator->get();
             }
-            *emulator->out << "Unknown operation: " << operation << endl;
+            *emulator->out << "\nUnknown operation: " << operation << endl;
             throw 1;
         }
         else {
@@ -23,14 +23,14 @@ void Wc::getOpt() {
         }
     }
     else {
-        *emulator->out << "Syntax error: expected '-'!" << endl;
+        *emulator->out << "\nSyntax error: expected '-'!" << endl;
         throw 1;
     }
 }
 
 void Wc::wordCount() {
     if (argument.empty()) {
-        *emulator->out << "Argument is empty!" << endl;
+        *emulator->out << "\nArgument is empty!" << endl;
         throw 2;
     }
     int num = 1;
@@ -45,7 +45,7 @@ void Wc::wordCount() {
 
 void Wc::charCount() {
     if (argument.empty()) {
-        *emulator->out << "Argument is empty!" << endl;
+        *emulator->out << "\nArgument is empty!" << endl;
         throw 2;
     }
     *out << argument.size() << endl;

@@ -8,7 +8,8 @@ Touch::Touch(Emulator* e)
 void Touch::process() {
     ifstream ifajl = ifstream(filename);
     if (ifajl) {
-        *emulator->out << "File " << filename << " already exists!" << endl << '-' << filename.size() << '-' << endl;
+        *emulator->out << "\nFile " << filename << " already exists!" << endl;
+        if (emulator->out != &cout) emulator->position--;
         throw -(int)filename.size();
     }
     else {
