@@ -9,6 +9,7 @@ Rm::Rm(Emulator* e)
 void Rm::process() {
     ifile = ifstream(filename);
     if (ifile) {
+        ifile.close();
         if (!filesystem::remove(filename)) {
             *emulator->out << "\nFile couldnt be deleted!";
             throw 0;
